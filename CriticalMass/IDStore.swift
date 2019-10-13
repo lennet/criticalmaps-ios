@@ -25,6 +25,6 @@ public class IDStore: IDProvider {
         format.dateFormat = "yyyy-MM-dd"
         let dateString = format.string(from: currentDate)
         
-        return String(id + dateString).sha256!
+        return String(id + dateString).md5!
     }
 }
