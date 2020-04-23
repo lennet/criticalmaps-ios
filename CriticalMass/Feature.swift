@@ -11,10 +11,12 @@ import Foundation
 
 private var currentState: [Feature: Bool] = [
     .friends: false,
-    .errorHandler: false
+    .errorHandler: false,
+    .events: false
 ]
 
 enum Feature {
+    case events
     case friends
     case errorHandler
 
