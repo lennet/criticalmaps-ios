@@ -19,6 +19,7 @@ class SettingsViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -143,8 +144,8 @@ class SettingsViewController: UITableViewController {
     }
 }
 
-extension SettingsViewController {
-    fileprivate func configure(_ cell: UITableViewCell, for section: Section, indexPath: IndexPath) {
+private extension SettingsViewController {
+    func configure(_ cell: UITableViewCell, for section: Section, indexPath: IndexPath) {
         switch section {
         case let .projectLinks(configurations):
             if let projectLinkCell = cell as? SettingsProjectLinkTableViewCell {
@@ -157,7 +158,8 @@ extension SettingsViewController {
         default:
             let model = section.models[indexPath.row]
             if let switchCell = cell as? SettingsSwitchTableViewCell,
-                case let .switch(switchableType) = model.action {
+               case let .switch(switchableType) = model.action
+            {
                 if switchableType == ObservationModePreferenceStore.self {
                     switchCell.configure(switchable: ObservationModePreferenceStore())
                 } else if switchableType == ThemeController.self {
