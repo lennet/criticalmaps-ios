@@ -4,8 +4,8 @@
 import Foundation
 import UIKit
 
-extension UserDefaults {
-    public static func makeClearedInstance(
+public extension UserDefaults {
+    static func makeClearedInstance(
         for functionName: StaticString = #function,
         inFile fileName: StaticString = #file
     ) -> UserDefaults {
@@ -19,7 +19,7 @@ extension UserDefaults {
     }
 }
 
-extension UserDefaults {
+public extension UserDefaults {
     private enum Keys {
         static let observationModeKey = "observationMode"
         static let lastMessageReadTimeIntervalKey = "lastMessageReadTimeInterval"
@@ -34,7 +34,7 @@ extension UserDefaults {
 
     // TODO: Move default value to PreferenceStore
     /// - Returns: Searchradius in Kilometer. Default value is 20
-    public var nextRideRadius: Int {
+    var nextRideRadius: Int {
         set { set(newValue, forKey: Keys.nextRideRadius) }
         get {
             let radius = integer(forKey: Keys.nextRideRadius)
@@ -43,42 +43,42 @@ extension UserDefaults {
         }
     }
 
-    public var username: String? {
+    var username: String? {
         set { set(newValue, forKey: Keys.userNameKey) }
         get { string(forKey: Keys.userNameKey) }
     }
 
-    public var observationMode: Bool {
+    var observationMode: Bool {
         set { set(newValue, forKey: Keys.observationModeKey) }
         get { bool(forKey: Keys.observationModeKey) }
     }
 
-    public var lastMessageReadTimeInterval: Double {
+    var lastMessageReadTimeInterval: Double {
         set { set(newValue, forKey: Keys.lastMessageReadTimeIntervalKey) }
         get { double(forKey: Keys.lastMessageReadTimeIntervalKey) }
     }
 
-    public var theme: String? {
+    var theme: String? {
         set { set(newValue, forKey: Keys.themeKey) }
         get { string(forKey: Keys.themeKey) }
     }
 
-    public var lastDayUsed: Date? {
+    var lastDayUsed: Date? {
         set { set(newValue, forKey: Keys.lastDayUsedKey) }
         get { object(forKey: Keys.lastDayUsedKey) as? Date }
     }
 
-    public var daysCounter: Int {
+    var daysCounter: Int {
         set { set(newValue, forKey: Keys.daysCounterKey) }
         get { integer(forKey: Keys.daysCounterKey) }
     }
 
-    public var usesCounter: Int {
+    var usesCounter: Int {
         set { set(newValue, forKey: Keys.usesCounterKey) }
         get { integer(forKey: Keys.usesCounterKey) }
     }
 
-    public var lastRatedVersion: String? {
+    var lastRatedVersion: String? {
         set { set(newValue, forKey: Keys.lastRatedVersionKey) }
         get { string(forKey: Keys.lastRatedVersionKey) }
     }

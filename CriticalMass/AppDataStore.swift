@@ -89,9 +89,10 @@ public class AppDataStore: DataStore {
         try? friendsFetchResultsController.performFetch()
         friends = friendsFetchResultsController.fetchedObjects?.compactMap { storedFriend in
             guard let name = storedFriend.name,
-                let keyRef = storedFriend.keyReference,
-                let keyData = try? KeychainHelper.load(with: keyRef),
-                let token = String(bytes: keyData, encoding: .utf8) else {
+                  let keyRef = storedFriend.keyReference,
+                  let keyData = try? KeychainHelper.load(with: keyRef),
+                  let token = String(bytes: keyData, encoding: .utf8)
+            else {
                 return nil
             }
             return Friend(name: name, token: token)

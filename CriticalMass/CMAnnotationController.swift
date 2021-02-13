@@ -51,7 +51,7 @@ final class CMMarkerAnnotationController: AnnotationController {
         isRideOutdatedTimer?.invalidate()
     }
 
-    public override func setup() {
+    override public func setup() {
         isRideOutdatedTimer = Timer.scheduledTimer(
             timeInterval: outdatedCheckTimeinterval,
             target: self,
@@ -67,7 +67,8 @@ final class CMMarkerAnnotationController: AnnotationController {
 
     @objc private func checkRide() {
         guard let rideAnnotation = mapView.annotations.first(
-            where: canBeCastedTo(CriticalMassAnnotation.self)) as? CriticalMassAnnotation else {
+            where: canBeCastedTo(CriticalMassAnnotation.self)) as? CriticalMassAnnotation
+        else {
             Logger.log(.debug, log: .default, "Expected annotation")
             return
         }
@@ -124,7 +125,7 @@ final class CMAnnotationController: AnnotationController {
         isRideOutdatedTimer?.invalidate()
     }
 
-    public override func setup() {
+    override public func setup() {
         isRideOutdatedTimer = Timer.scheduledTimer(
             timeInterval: outdatedCheckTimeinterval,
             target: self,
@@ -140,7 +141,8 @@ final class CMAnnotationController: AnnotationController {
 
     @objc private func checkRide() {
         guard let rideAnnotation = mapView.annotations.first(
-            where: canBeCastedTo(CriticalMassAnnotation.self)) as? CriticalMassAnnotation else {
+            where: canBeCastedTo(CriticalMassAnnotation.self)) as? CriticalMassAnnotation
+        else {
             Logger.log(.debug, log: .default, "Expected annotation")
             return
         }
